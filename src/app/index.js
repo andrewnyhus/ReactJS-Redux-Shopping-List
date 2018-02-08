@@ -9,12 +9,6 @@ import { Home } from "./components/Home";
 class App extends React.Component {
     render() {
 
-      var user = {
-        name: "Andrew",
-        age: 22,
-        hobbies: ["Video Games", "Running"]
-      };
-
       return(
         <div className="container">
           <div className="row">
@@ -26,9 +20,7 @@ class App extends React.Component {
 
           <div className="row">
             <div className="col-xs-10 col-xs-offset-1">
-              <Home component_name="Home" user={user} >
-                <p>I am a child element of the Home component.</p>
-              </Home>
+              <Home componentName={"Home"} initialAge={22}/>
 
             </div>
           </div>
