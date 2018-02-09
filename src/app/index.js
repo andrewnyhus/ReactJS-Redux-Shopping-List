@@ -7,27 +7,33 @@ import { Home } from "./components/Home";
 
 // define app component
 class App extends React.Component {
-    render() {
 
-      return(
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-10 col-xs-offset-1">
-              <Header homeLink="Home"/>
+  onGreet(){
+    alert("Hello");
+  }
 
-            </div>
+
+  render() {
+
+    return(
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-10 col-xs-offset-1">
+            <Header homeLink="Home"/>
+
           </div>
-
-          <div className="row">
-            <div className="col-xs-10 col-xs-offset-1">
-              <Home componentName={"Home"} initialAge={22}/>
-
-            </div>
-          </div>
-
         </div>
-      );
-    }
+
+        <div className="row">
+          <div className="col-xs-10 col-xs-offset-1">
+            <Home componentName={"Home"} initialAge={22} greet={this.onGreet}/>
+
+          </div>
+        </div>
+
+      </div>
+    );
+  }
 }
 
 // tell react what to render where.
