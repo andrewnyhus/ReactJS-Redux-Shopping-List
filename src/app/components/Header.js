@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink as Link} from "react-router-dom";
 
 /* stateless component */
 export const Header = (props) => {
@@ -7,7 +8,8 @@ export const Header = (props) => {
       <div className="container">
         <div className="navbar-header">
           <ul className="nav navbar-nav">
-            <li><a>{props.homeLink}</a></li>
+            <li><Link to="/home" activeStyle={{color: "blue"}} >Home</Link></li>
+            <li><Link to="/user/example_user" activeStyle={{color: "blue"}} >User</Link></li>
           </ul>
         </div>
       </div>
