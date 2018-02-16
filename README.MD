@@ -1,4 +1,4 @@
-Followed [link](https://www.youtube.com/playlist?list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS "Academind's tutorial 'ReactJS Basics'"):
+I created this by following [Academind's tutorial "ReactJS Basics"](https://www.youtube.com/playlist?list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS ""):
 
 This tutorial introduced me to:
 * Webpack
