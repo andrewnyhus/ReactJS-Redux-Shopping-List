@@ -24,6 +24,19 @@ var config = {
         query: {
           presets: ["react", "es2015", "stage-2"]
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "sass-loader",
+            options: {
+                includePaths: ["absolute/path/a", "absolute/path/b"]
+            }
+        }]
       }
     ]
   }

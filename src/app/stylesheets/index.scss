@@ -1,0 +1,22 @@
+
+body {
+  overflow-x: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.news_story{
+  background-color: rgb(238, 238, 238);
+}
+
+.news_story:hover {
+  background-color: rgb(30, 175, 252);
+}
+
+.news_story>a {
+  padding-left: 10px;
+}
+
+.news_story:hover>a {
+  color: rgb(255, 255, 255);
+}
