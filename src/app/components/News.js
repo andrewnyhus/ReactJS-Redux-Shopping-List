@@ -9,7 +9,8 @@ export class News extends React.Component {
 
     this.state = {
         lastUpdated: "Not yet updated",
-        newsResults: []
+        newsResults: [],
+        spinnerIsVisible: "block"
     }
 
   }
@@ -17,6 +18,10 @@ export class News extends React.Component {
 
   // fetches latest news and sets it to state to re-render the UI if needed
   updateNews(){
+
+    this.setState({
+      spinnerIsVisible: "block"
+    });
 
     // Built by LucyBot. www.lucybot.com
     var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key="+ nyt_api_key;
@@ -27,16 +32,19 @@ export class News extends React.Component {
       .then(
         (result) => {
           this.setState({
+
             lastUpdated: "News Last Updated: " + result.last_updated,
-            newsResults: result.results
+            newsResults: result.results,
+            spinnerIsVisible: "none"
           });
         },
 
         (error) => {
           console.log("Error in componentDidMount");
           this.setState({
-            lastUpdated: "Error Updating News",
+            lastUpdated: "Error Updating News, Please Try Again",
             newsResults: [],
+            spinnerIsVisible: "none",
             error
           });
         }
@@ -56,26 +64,27 @@ export class News extends React.Component {
 
   render(){
 
+    // instantiate loader style object
+    const loaderStyle = {
+      display: this.state.spinnerIsVisible
+    };
+
+
     // instantiate newsList
     const newsList = (
-        <ul className={"list-group"}>
+        <ul className={"list-group news_list"}>
               {/* Iterate through news stories, creating item for each */}
               {this.state.newsResults.map((result, i) =>
                   <li
-                    id={"result_"+i}
-                    key={"result_"+i}
-                    className={"list-group-item news_story"}>
+                    id={"result_"+i} key={"result_"+i} className={"list-group-item news_story"}>
 
                     {/* Thumbnail image */}
                     {/* if news result has 1 or more images, pick first one as thumbnail */}
-                    <img id={"thumbnail_"+i}
-                      key={"thumbnail_"+i}
+                    <img id={"thumbnail_"+i} key={"thumbnail_"+i}
                       src={this.state.newsResults[i].multimedia.length > 0 ? this.state.newsResults[i].multimedia[0].url : ""}></img>
 
                     {/* Link with title */}
-                    <a href={result.url}
-                      id={"result_"+i}
-                      key={"result_"+i}>{result.title}</a>
+                    <a href={result.url} id={"result_"+i} key={"result_"+i}>{result.title}</a>
                     {/* Author */}
                     <h6 id={"author_"+i} key={"author_"+i}>{result.byline}</h6>
                   </li>
@@ -84,12 +93,15 @@ export class News extends React.Component {
       );
 
 
+
     return (
       <div>
         <h3>News (NY Times Top Stories) </h3>
         <h6>{this.state.lastUpdated}</h6>
         <button onClick={() => this.updateNews()} className="btn btn-primary"><span className="glyphicon glyphicon-refresh"></span></button>
         <hr/>
+
+        <div className="loader" style={loaderStyle}></div>
 
         {newsList}
 
