@@ -15,4 +15,5 @@ for React v4. After finishing the tutorial, I turned one component into a list
 of top stories from the New York Times API. For this I introduced myself to Sass.
 
 Here is a screenshot of the news component I built:
-![News Component](https://github.com/andrewnyhus/ReactJS-Tutorial/blob/master/news_component_screenshot.png "News Component")
+![News Component][screenshot]
+[screenshot]: https://github.com/andrewnyhus/ReactJS-Tutorial/blob/master/news_component_screenshot.png "News Component"
