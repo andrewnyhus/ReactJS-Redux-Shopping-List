@@ -13,3 +13,6 @@ This tutorial introduced me to:
 I had to learn routing independent of the tutorial as the tutorial was not made
 for React v4. After finishing the tutorial, I turned one component into a list
 of top stories from the New York Times API. For this I introduced myself to Sass.
+
+Here is a screenshot of the news component I built:
+![News Component](news_component_screenshot.png "News Component")
