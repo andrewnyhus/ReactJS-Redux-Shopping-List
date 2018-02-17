@@ -13,20 +13,32 @@ body {
   transform: rotate(3deg);
 }
 
-.shopping_list_item{
+.shopping_list_item, .header_container{
   background-color: rgb(238, 238, 238);
 }
 
-.shopping_list_item:hover {
-  background-color: rgb(30, 175, 252);
+.shopping_list_item:hover, .header_container:hover {
+  background-color: rgb(255, 255, 255);
 }
 
-.shopping_list_item>a {
-  padding-left: 10px;
+.new_item>button{
+  width: 100%;
 }
 
-.shopping_list_item:hover>a {
-  color: rgb(255, 255, 255);
+.trash_div{
+  text-align: left;
+  display: inline-block;
+  padding-right: 2.5%;
+}
+
+
+.shopping_list_item_text{
+  width: 85%;
+  display: inline-block;
+}
+
+.shopping_list_item_text:not(:focus){
+  background-color:rgb(238, 238, 238);
 }
 
 
