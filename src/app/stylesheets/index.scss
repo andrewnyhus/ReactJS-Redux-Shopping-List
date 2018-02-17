@@ -21,16 +21,9 @@ body {
   width: 100%;
 }
 
-.trash_div{
-  text-align: left;
-  display: inline-block;
-  margin-right: 2.5%;
-}
 
-
-.shopping_list_item_text{
-  width: 80%;
-  display: inline-block;
+.checked_shopping_list_item_text{
+  text-decoration: line-through;
 }
 
 .shopping_list_item_checkbox{

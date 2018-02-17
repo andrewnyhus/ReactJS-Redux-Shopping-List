@@ -15,19 +15,21 @@ export class App extends React.Component{
           createShoppingItem={(value) => this.props.createShoppingItem(value)}
           updateShoppingItem={(newValue, index) => this.props.updateShoppingItem(newValue, index)}
           deleteShoppingItem={(index) => this.props.deleteShoppingItem(index)}
+          toggleCheckItem={(index) => this.props.toggleCheckItem(index)}
           />
       </Root>
     );
   }
 }
 
-
+// maps the state into props :)
 const mapStateToProps = (state) => {
   return {
     item: state
   };
 };
 
+// maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
 
@@ -53,9 +55,9 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
 
-    checkItem: (index) => {
+    toggleCheckItem: (index) => {
       dispatch({
-        type: "CHECK",
+        type: "TOGGLE_CHECK",
         payload: {index: index}
       })
     }
@@ -64,4 +66,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
+// connects App component with mapped props
 export default connect(mapStateToProps, mapDispatchToProps)(App);

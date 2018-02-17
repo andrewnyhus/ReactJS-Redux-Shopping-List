@@ -22,6 +22,7 @@ export const Routes = (props) => {
                   createShoppingItem={(value) => globalProps.createShoppingItem(value)}
                   updateShoppingItem={(newValue, index) => globalProps.updateShoppingItem(newValue, index)}
                   deleteShoppingItem={(index) => globalProps.deleteShoppingItem(index)}
+                  toggleCheckItem={(index) => globalProps.toggleCheckItem(index)}
                   />
               )}
               props={props}
