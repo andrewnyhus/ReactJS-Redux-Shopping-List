@@ -53,13 +53,13 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
 
-
-    setItems: (items) => {
+    checkItem: (index) => {
       dispatch({
-        type: "SET_ITEMS",
-        payload: items
-      });
+        type: "CHECK",
+        payload: {index: index}
+      })
     }
+
   };
 };
 

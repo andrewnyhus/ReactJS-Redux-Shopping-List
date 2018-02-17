@@ -5,10 +5,7 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import App from "./components/App";
 
-
 require("./stylesheets/index.scss");
-
-
 
 
 // set up reducer
@@ -82,27 +79,6 @@ store.subscribe(() => {
   console.log("store updated: ");
   console.log(store.getState());
 });
-
-
-/*store.dispatch({
-  type: "CREATE",
-  payload: {value: "Sample Value"}
-});
-store.dispatch({
-  type: "CREATE",
-  payload: {value: "Sample Value 2"}
-});
-
-store.dispatch({
-  type: "UPDATE",
-  payload: {newValue: "Updated Value", index: 0}
-});
-
-store.dispatch({
-  type: "DELETE",
-  payload: {index: 0}
-});*/
-
 
 
 

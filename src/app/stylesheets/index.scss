@@ -9,15 +9,11 @@ body {
   text-align: center;
 }
 
-.header_label:hover{
-  transform: rotate(3deg);
-}
-
-.shopping_list_item, .header_container{
+.shopping_list_item:hover{
   background-color: rgb(238, 238, 238);
 }
 
-.shopping_list_item:hover, .header_container:hover {
+.shopping_list_item{
   background-color: rgb(255, 255, 255);
 }
 
@@ -28,19 +24,19 @@ body {
 .trash_div{
   text-align: left;
   display: inline-block;
-  padding-right: 2.5%;
+  margin-right: 2.5%;
 }
 
 
 .shopping_list_item_text{
-  width: 85%;
+  width: 80%;
   display: inline-block;
 }
 
-.shopping_list_item_text:not(:focus){
-  background-color:rgb(238, 238, 238);
+.shopping_list_item_checkbox{
+  display: inline-block;
+  margin-left: 2.5%;
 }
-
 
 .loader {
   margin: auto;

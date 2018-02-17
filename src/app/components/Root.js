@@ -7,7 +7,7 @@ export class Root extends React.Component {
     return (
 
       <div className="container">
-        <div className="row header_container">
+        <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
             <Header />
           </div>
