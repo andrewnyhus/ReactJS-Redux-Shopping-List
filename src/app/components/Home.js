@@ -1,14 +1,14 @@
 import React from "react";
 
-import {EditList} from "./EditList";
+import {ItemList} from "./ItemList";
 
 export const Home = (props) => {
 
 
   return (
     <div>
-      {/* Pass props to EditList */}
-      <EditList
+      {/* Pass props to ItemList */}
+      <ItemList
         itemResult={props.itemResult}
         itemLastValues={props.itemLastValues}
         createShoppingItem={(value) => props.createShoppingItem(value)}

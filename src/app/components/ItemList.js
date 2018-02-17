@@ -1,6 +1,6 @@
 import React from "react";
 
-export const EditList = (props) => {
+export const ItemList = (props) => {
 
 
   const newItemRow = (
