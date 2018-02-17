@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink as Link} from "react-router-dom";
 
 /* stateless component */
 export const Header = (props) => {
