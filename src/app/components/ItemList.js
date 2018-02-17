@@ -31,14 +31,21 @@ export const ItemList = (props) => {
             </span>
 
 
+
             {/* Item text input/display */}
-            {item.checked ? (
-                <input className="form-control shopping_list_item_text checked_shopping_list_item_text" type="text" value={item.value}
-                  onChange={(event) => props.updateShoppingItem(event, i)} disabled="true" />
-            ):(
-                <input className="form-control shopping_list_item_text" type="text" value={item.value}
-                  onChange={(event) => props.updateShoppingItem(event, i)} />
-            )}
+            <input
+              className={item.checked ? "form-control shopping_list_item_text checked_shopping_list_item_text": "form-control shopping_list_item_text"}
+              type="text"
+              value={item.value}
+              onChange={(event) => props.updateShoppingItem(event, i)}
+              disabled={item.checked ? true : false }
+              autoFocus={(i + 1 === props.itemResult.items.length) ? true : false}
+              onKeyPress={(event) => {
+                if(event.key === "Enter"){
+                  props.createShoppingItem("");
+                }
+              }}/>
+
 
 
             {/* Item checkbox */}
