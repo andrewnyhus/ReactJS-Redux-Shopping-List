@@ -33,7 +33,7 @@ export class News extends React.Component {
         (result) => {
           this.setState({
 
-            lastUpdated: "News Last Updated: " + result.last_updated,
+            lastUpdated: "News Last Updated: " + result.last_updated.replace("T", " "),
             newsResults: result.results,
             spinnerIsVisible: "none"
           });
