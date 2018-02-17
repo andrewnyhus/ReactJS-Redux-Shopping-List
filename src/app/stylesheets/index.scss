@@ -5,7 +5,15 @@ body {
 }
 
 
-.news_story{
+.header_label{
+  text-align: center;
+}
+
+.header_label:hover{
+  transform: rotate(3deg);
+}
+
+/*.news_story{
   background-color: rgb(238, 238, 238);
 }
 
@@ -20,7 +28,7 @@ body {
 .news_story:hover>a {
   color: rgb(255, 255, 255);
 }
-
+*/
 
 .loader {
   margin: auto;

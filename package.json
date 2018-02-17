@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-tutorial",
+  "name": "ReactJS-Redux-Shopping-List",
   "version": "1.0.0",
-  "description": "Fun with ReactJS",
+  "description": "Using ReactJS and Redux to Build a Shopping List",
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
@@ -9,7 +9,8 @@
     "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
   "keywords": [
-    "reactjs"
+    "reactjs",
+    "redux"
   ],
   "author": "Andrew Nyhus",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2"
   },
