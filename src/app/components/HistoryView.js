@@ -11,7 +11,7 @@ export const HistoryView = (props) => {
 const toggleHistoryVisibility = (
   <div>
     <button
-      className={"btn btn-primary"}
+      className={"btn btn-primary form-control"}
       onClick={() => props.toggleHistoryVisibility()}>
         <Glyphicon glyph="time"/>
         {props.showHistory ? "Hide History" : "Show History" }
@@ -19,80 +19,91 @@ const toggleHistoryVisibility = (
   </div>
 );
 
-
+// History Inspector
+//==============================================================================
 const historyInspector = (
-  <ul className="list-group">
+  <div>
+    <hr/>
+    {/* Title of Inspector */}
+    {props.selectedHistoryEntryToInspect > -1 ? (
+      <h4 align="center">{"Edit # " + (props.selectedHistoryEntryToInspect + 1)}</h4>
+    ):""}
+
+
     {/* Populate History Inspector */}
-    {props.selectedHistoryEntryToInspect > -1 && props.itemLastValues[props.selectedHistoryEntryToInspect].items.length > 0 ? (
-        <div>
-          {props.itemLastValues[props.selectedHistoryEntryToInspect].items.map((item, i) =>
+    <ul className="list-group">
+      {props.selectedHistoryEntryToInspect > -1 && props.itemLastValues[props.selectedHistoryEntryToInspect].items.length > 0 ? (
+          <div>
+            {props.itemLastValues[props.selectedHistoryEntryToInspect].items.map((item, i) =>
 
-            <li key={"item_"+i} className={"list-group-item shopping_list_item"}>
+              <li key={"item_"+i} className={"list-group-item shopping_list_item"}>
 
-                {/* Item checkbox & text */}
-                {item.checked ? (
-                  <div>
-                    <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={true} onChange={() => props.toggleCheckItem(i)} />
-                    <div className={"checked_shopping_list_item_text"}>{item.value}</div>
-                  </div>
-                ):(
-                  <div>
-                    <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={false} onChange={() => props.toggleCheckItem(i)} />
-                    <div>{item.value}</div>
-                  </div>
-                )}
+                  {/* Item checkbox & text */}
+                  {item.checked ? (
+                    <div>
+                      <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={true} onChange={() => props.toggleCheckItem(i)} />
+                      <div className={"shopping_list_item_text checked_shopping_list_item_text"}>{item.value}</div>
+                    </div>
+                  ):(
+                    <div>
+                      <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={false} onChange={() => props.toggleCheckItem(i)} />
+                      <div className={"shopping_list_item_text_history"}>{item.value}</div>
+                    </div>
+                  )}
 
+              </li>
+            )}
+          </div>
 
-
-            </li>
-          )}
-        </div>
-
-      ):(
-        <h6 align="center">No Items in History Version</h6>
-      )}
-  </ul>
+        ):(
+          <h5 align="center">No Items in History Version</h5>
+        )}
+    </ul>
+  </div>
 );
+//==============================================================================
 
 
 
 const historyDropdown = (
-  <div>
+  <div className={"dropdown_container"}>
     {/* Show dropdown of history versions */}
     {props.selectedHistoryEntryToInspect > -1 ? (
-      <div>
-        <DropdownButton id="historyDropdown" title={"Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
+      <DropdownButton id="historyDropdown" dropup={true} title={"Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
 
-          {/* Populate dropdown menu */}
-          {props.itemLastValues.map((entry, i) =>
-            <MenuItem
-              eventKey={"dropdown_item_" + i}
-              key={"dropdown_item_" + i}
-              onSelect={() => props.selectHistoryEntryToInspect(i)}
-              title={"Edit # " + (i + 1)}
-              >
-                {"Edit # " + (i + 1)}
-            </MenuItem>
-          )}
-        </DropdownButton>
-
-
-        {historyInspector}
-
-      </div>
-
+        {/* Populate dropdown menu */}
+        {props.itemLastValues.map((entry, i) =>
+          <MenuItem eventKey={"dropdown_item_" + i} key={"dropdown_item_" + i}
+            onSelect={() => props.selectHistoryEntryToInspect(i)}
+            onMouseEnter={() => props.selectHistoryEntryToInspect(i)}
+            title={"Edit # " + (i + 1)}>
+              {"Edit # " + (i + 1)}
+          </MenuItem>
+        )}
+      </DropdownButton>
     ):(
-      <h6 align="center">No History</h6>
+      <h4 align="center">No History</h4>
     )}
   </div>
 );
 
 
-const historyView = (
 
+const historyView = (
   <div hidden={!props.showHistory}>
       <br></br>
+
+
       {historyDropdown}
+
+
+
+
+      {/* Show Inspector if history exists */}
+      {props.selectedHistoryEntryToInspect > -1 ? (
+        <div>{historyInspector}</div>
+      ):""}
+
   </div>
 );
 
