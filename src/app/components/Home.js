@@ -5,6 +5,8 @@ import {HistoryView} from "./HistoryView";
 
 
 export const Home = (props) => {
+  {console.log("Home props")}
+  {console.log(props)}
 
   return (
     <div>
@@ -17,8 +19,15 @@ export const Home = (props) => {
         toggleCheckItem={(index) => props.toggleCheckItem(index)}
         />
 
+      <hr />
+
+      {/* Pass props to HistoryView */}
       <HistoryView
         itemLastValues={props.itemLastValues}
+        showHistory={props.showHistory}
+        toggleHistoryVisibility={() => props.toggleHistoryVisibility()}
+        selectHistoryEntryToInspect={(index) => props.selectHistoryEntryToInspect(index)}
+        selectedHistoryEntryToInspect={props.selectedHistoryEntryToInspect}
         />
 
 

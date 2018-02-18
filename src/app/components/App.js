@@ -7,15 +7,22 @@ export class App extends React.Component{
 
 
   render(){
+    {console.log("app props")}
+    {console.log(this.props)}
+
     return (
       <Root>
         <Home
-          itemResult={this.props.item.result}
-          itemLastValues={this.props.item.lastValues}
+          itemResult={this.props.item.itemReducer.result}
+          itemLastValues={this.props.item.itemReducer.lastValues}
           createShoppingItem={(value) => this.props.createShoppingItem(value)}
           updateShoppingItem={(newValue, index) => this.props.updateShoppingItem(newValue, index)}
           deleteShoppingItem={(index) => this.props.deleteShoppingItem(index)}
           toggleCheckItem={(index) => this.props.toggleCheckItem(index)}
+          showHistory={this.props.item.historyVisibilityReducer.showHistory}
+          toggleHistoryVisibility={() => this.props.toggleHistoryVisibility()}
+          selectHistoryEntryToInspect={(index) => this.props.selectHistoryEntryToInspect(index)}
+          selectedHistoryEntryToInspect={this.props.item.itemReducer.selectedHistoryEntryToInspect}
           />
       </Root>
     );
@@ -60,7 +67,22 @@ const mapDispatchToProps = (dispatch) => {
         type: "TOGGLE_CHECK",
         payload: {index: index}
       })
+    },
+
+    toggleHistoryVisibility: () => {
+      dispatch({
+        type: "TOGGLE_HISTORY_VISIBILITY",
+        payload: {}
+      })
+    },
+
+    selectHistoryEntryToInspect: (index) => {
+      dispatch({
+        type: "SELECT_HISTORY_VERSION_TO_INSPECT",
+        payload: {index: index}
+      })
     }
+
 
   };
 };

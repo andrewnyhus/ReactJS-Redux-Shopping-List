@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-
-import {createStore} from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
+
 import App from "./components/App";
 
 require("./stylesheets/index.scss");
@@ -12,7 +12,8 @@ require("./stylesheets/index.scss");
 // =============================================================================
 const itemReducer = (state = {
     result: {items: []},
-    lastValues: []
+    lastValues: [],
+    selectedHistoryEntryToInspect: -1 // mutate this variable because we don't want to preserve it's state
   }, action) => {
 
 
@@ -23,7 +24,8 @@ const itemReducer = (state = {
       state = {
         ...state,
         result: {items: [...state.result.items, {value: value, checked: false}]},
-        lastValues: [...state.lastValues, state.result]
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
       };
       break;
 
@@ -48,7 +50,8 @@ const itemReducer = (state = {
                     return newItem;
               })
         },
-        lastValues: [...state.lastValues, state.result]
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
       }
       break;
 
@@ -64,7 +67,8 @@ const itemReducer = (state = {
             ...state.result.items.slice(indexToDelete + 1)
           ]
         },
-        lastValues: [...state.lastValues, state.result]
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
       }
 
       break;
@@ -89,9 +93,22 @@ const itemReducer = (state = {
                     return newItem;
               })
         },
-        lastValues: [...state.lastValues, state.result]
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
       }
 
+      break;
+
+    case "REVERT_TO_HISTORY_ITEM":
+      break;
+
+    case "SELECT_HISTORY_VERSION_TO_INSPECT":
+      var selectIndex = action.payload.index;
+
+      state = {
+        ...state,
+        selectedHistoryEntryToInspect: selectIndex
+      }
       break;
 
   }
@@ -102,16 +119,16 @@ const itemReducer = (state = {
 
 // set up view history reducer
 // =============================================================================
-const historyReducer = (state = {
-  showHistory: false,
-  lastValues: []
+const historyVisibilityReducer = (state = {
+  showHistory: false
 }, action) => {
 
   switch (action.type){
     case "TOGGLE_HISTORY_VISIBILITY":
-
-      break;
-    case "REVERT_TO_HISTORY_ITEM":
+      state = {
+        ...state,
+        showHistory: !state.showHistory
+      }
       break;
   }
 
@@ -120,8 +137,17 @@ const historyReducer = (state = {
 // =============================================================================
 
 
+const myLogger = (store) => (next) => (action) => {
+  console.log("Logged action: ", action);
+  next(action);
+};
+
+// combine reducers
+const reducers = combineReducers({itemReducer, historyVisibilityReducer});
+
+
 // create the data store
-const store = createStore(itemReducer);
+const store = createStore(reducers, {}, applyMiddleware(myLogger));
 
 // when the state changes, print it to the console
 store.subscribe(() => {
@@ -129,7 +155,7 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-// create one item to start the list 
+// create one item to start the list
 store.dispatch({
   type: "CREATE",
   payload: {value: ""}
