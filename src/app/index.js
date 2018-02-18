@@ -37,18 +37,11 @@ const itemReducer = (state = {
       state = {
         ...state,
         result: {
-          items:
-            state.result.items.map(
-              (item, index) => {
-                    if(index !== indexToUpdate) {
-                        // This isn't the item we care about - keep it as-is
-                        return item;
-                    }
-                    // Otherwise, this is the one we want - return an updated value
-                    var newItem = item;
-                    newItem.value = newValue;
-                    return newItem;
-              })
+          items:[
+            ...state.result.items.slice(0, indexToUpdate),
+            {value: newValue, checked: state.result.items[indexToUpdate].checked},
+            ...state.result.items.slice(indexToUpdate + 1)
+          ]
         },
         lastValues: [...state.lastValues, state.result],
         selectedHistoryEntryToInspect: state.lastValues.length
@@ -80,18 +73,11 @@ const itemReducer = (state = {
       state = {
         ...state,
         result: {
-          items:
-            state.result.items.map(
-              (item, index) => {
-                    if(index !== indexToToggle) {
-                        // This isn't the item we care about - keep it as-is
-                        return item;
-                    }
-                    // Otherwise, this is the one we want - return an updated value
-                    var newItem = item;
-                    newItem.checked = !newItem.checked;
-                    return newItem;
-              })
+          items:[
+            ...state.result.items.slice(0, indexToToggle),
+            {value: state.result.items[indexToToggle].value, checked: !state.result.items[indexToToggle].checked},
+            ...state.result.items.slice(indexToToggle + 1)
+          ]
         },
         lastValues: [...state.lastValues, state.result],
         selectedHistoryEntryToInspect: state.lastValues.length
