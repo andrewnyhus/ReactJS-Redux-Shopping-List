@@ -29,17 +29,20 @@ const historyInspector = (
 
             <li key={"item_"+i} className={"list-group-item shopping_list_item"}>
 
-
-                {/* Item checkbox */}
+                {/* Item checkbox & text */}
                 {item.checked ? (
-                  <input type="checkbox" className="shopping_list_item_checkbox" disabled={true} checked={true} onChange={() => props.toggleCheckItem(i)} />
+                  <div>
+                    <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={true} onChange={() => props.toggleCheckItem(i)} />
+                    <div className={"checked_shopping_list_item_text"}>{item.value}</div>
+                  </div>
                 ):(
-                  <input type="checkbox" className="shopping_list_item_checkbox" disabled={true} checked={false} onChange={() => props.toggleCheckItem(i)} />
+                  <div>
+                    <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={false} onChange={() => props.toggleCheckItem(i)} />
+                    <div>{item.value}</div>
+                  </div>
                 )}
 
 
-                {/* Item text display */}
-                {item.value}
 
             </li>
           )}
