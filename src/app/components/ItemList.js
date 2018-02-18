@@ -22,14 +22,17 @@ export const ItemList = (props) => {
         <li key={"item_"+i} className={"list-group-item shopping_list_item"}>
           <div className="input-group">
 
-            {/* Delete item button */}
-            <span className="input-group-btn">
-              <button align="left" className="btn btn-danger"
-                onClick={() => props.deleteShoppingItem(i)}>
-                <span className="glyphicon glyphicon-trash"></span>
-              </button>
-            </span>
 
+            {/* Item checkbox */}
+            {item.checked ? (
+              <span className="input-group-addon">
+                <input type="checkbox" className="shopping_list_item_checkbox" checked={true} onChange={() => props.toggleCheckItem(i)} />
+              </span>
+            ):(
+              <span className="input-group-addon">
+                <input type="checkbox" className="shopping_list_item_checkbox" checked={false} onChange={() => props.toggleCheckItem(i)} />
+              </span>
+            )}
 
 
             {/* Item text input/display */}
@@ -48,16 +51,13 @@ export const ItemList = (props) => {
 
 
 
-            {/* Item checkbox */}
-            {item.checked ? (
-              <span className="input-group-addon">
-                <input type="checkbox" className="shopping_list_item_checkbox" checked={true} onChange={() => props.toggleCheckItem(i)} />
+              {/* Delete item button */}
+              <span className="input-group-btn">
+                <button align="left" className="btn btn-danger"
+                  onClick={() => props.deleteShoppingItem(i)}>
+                  <span className="glyphicon glyphicon-trash"></span>
+                </button>
               </span>
-            ):(
-              <span className="input-group-addon">
-                <input type="checkbox" className="shopping_list_item_checkbox" checked={false} onChange={() => props.toggleCheckItem(i)} />
-              </span>
-            )}
 
 
           </div>

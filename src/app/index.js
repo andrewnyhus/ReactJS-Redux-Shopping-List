@@ -8,7 +8,7 @@ import App from "./components/App";
 require("./stylesheets/index.scss");
 
 
-// set up reducer to handle actions
+// set up items reducer
 // =============================================================================
 const itemReducer = (state = {
     result: {items: []},
@@ -100,6 +100,26 @@ const itemReducer = (state = {
 // =============================================================================
 
 
+// set up view history reducer
+// =============================================================================
+const historyReducer = (state = {
+  showHistory: false,
+  lastValues: []
+}, action) => {
+
+  switch (action.type){
+    case "TOGGLE_HISTORY_VISIBILITY":
+
+      break;
+    case "REVERT_TO_HISTORY_ITEM":
+      break;
+  }
+
+  return state;
+};
+// =============================================================================
+
+
 // create the data store
 const store = createStore(itemReducer);
 
@@ -109,6 +129,11 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
+// create one item to start the list 
+store.dispatch({
+  type: "CREATE",
+  payload: {value: ""}
+});
 
 
 // tell react what to render where. provide the data store
