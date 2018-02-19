@@ -24,7 +24,7 @@ edit history of the list, and revert back to previous versions of the list.
 ![Create Shopping List Item](https://github.com/andrewnyhus/ReactJS-Redux-Shopping-List/blob/master/readme_images/demo_create.gif?raw=true "Create Shopping List Item")
 
 
-### Update Shopping List Item (Type in the Textbox)
+### Update Shopping List Item (Type in the Textbox or Toggle Checkbox)
 
 ![Update Shopping List Item](https://github.com/andrewnyhus/ReactJS-Redux-Shopping-List/blob/master/readme_images/demo_update.gif?raw=true "Update Shopping List Item")
 

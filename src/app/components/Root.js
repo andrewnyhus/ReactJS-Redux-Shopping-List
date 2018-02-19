@@ -10,8 +10,9 @@ export const Root = (props) => {
           <div className="col-xs-10 col-xs-offset-1">
             <Header />
           </div>
-          <hr/>
         </div>
+
+        <hr/>
 
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
