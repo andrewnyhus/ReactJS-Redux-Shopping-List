@@ -3,21 +3,12 @@ import {Bootstrap, DropdownButton, ButtonToolbar, MenuItem, Glyphicon} from "rea
 
 export const HistoryView = (props) => {
 
-const toggleHistoryVisibility = (
-  <div>
-    <button
-      className={"btn btn-primary form-control"}
-      onClick={() => props.toggleHistoryVisibility()}>
-        <Glyphicon glyph="time"/>
-        {props.showHistory ? "Hide History" : "Show History" }
-    </button>
-  </div>
-);
+
 
 // History Inspector
 //==============================================================================
 const historyInspector = (
-  <div>
+  <div hidden={!props.showHistory}>
     <hr/>
     {/* Title of Inspector */}
     {props.selectedHistoryEntryToInspect > -1 ? (
@@ -63,11 +54,12 @@ const historyInspector = (
 //==============================================================================
 
 
-
+// History Dropdown
+//==============================================================================
 const historyDropdown = (
-  <div className={"dropdown_container"}>
+  <div className={"dropdown_container history_toolbar_item"}>
     {/* If there is history, show history dropdown */}
-    {props.selectedHistoryEntryToInspect > -1 ? (
+    {props.showHistory && props.selectedHistoryEntryToInspect > -1 ? (
       <DropdownButton id="historyDropdown" dropup={true} title={"Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
 
         {/* Populate dropdown menu */}
@@ -81,17 +73,22 @@ const historyDropdown = (
         )}
       </DropdownButton>
     ):(
-      <h4 align="center">No History</h4>
+      <div hidden={!props.showHistory}>
+
+        <h4 align="center">No History</h4>
+      </div>
     )}
   </div>
 );
+//==============================================================================
 
 
-
+// Revert to History Dropdown
+//==============================================================================
 const revertToHistoryEntry = (
-  <div className={"dropdown_container"}>
+  <div className={"dropdown_container history_toolbar_item"}>
     {/* If there is history, show revert history dropdown */}
-    {props.selectedHistoryEntryToInspect > -1 ? (
+    {props.showHistory && props.selectedHistoryEntryToInspect > -1 ? (
       <DropdownButton
         id={"revertDropdown"}
         className={"revertDropdown"} dropup={true} noCaret
@@ -106,39 +103,48 @@ const revertToHistoryEntry = (
 
       </DropdownButton>
     ):(
-      <h4 align="center">No History</h4>
+      <div hidden={!props.showHistory}>
+
+        <h4 align="center">No History</h4>
+      </div>
+
     )}
   </div>
 );
+//==============================================================================
 
 
+// Button Toolbar
+//==============================================================================
+const buttonToolbar = (
+  <div>
 
-const historyView = (
-  <div hidden={!props.showHistory}>
-      <br></br>
+    <ButtonToolbar id="history_toolbar">
 
-      {/* Show Inspector if history exists */}
-      {props.selectedHistoryEntryToInspect > -1 ? (
-        <div>
-          <ButtonToolbar>
-            {historyDropdown}
-            {revertToHistoryEntry}
-          </ButtonToolbar>
+      <button
+        className={"btn btn-primary history_toolbar_item"}
+        onClick={() => props.toggleHistoryVisibility()}>
+          <Glyphicon glyph="time"/>
+          {props.showHistory ? "Hide History" : "Show History" }
+      </button>
 
-          {historyInspector}
-        </div>
-      ):""}
+      {historyDropdown}
+      {revertToHistoryEntry}
+
+
+    </ButtonToolbar>
+
 
   </div>
 );
-
+//==============================================================================
 
 
 return (
   <div>
 
-    {toggleHistoryVisibility}
-    {historyView}
+    {buttonToolbar}
+    {historyInspector}
 
   </div>
 

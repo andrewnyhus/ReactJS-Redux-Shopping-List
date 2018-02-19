@@ -4,13 +4,11 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+
 .glyphicon-shopping-cart{
   margin-right: 1.3%;
 }
 
-.glyphicon-time{
-  margin-right: 1.5%;
-}
 
 .header_label{
   text-align: center;
@@ -46,9 +44,6 @@ body {
   text-decoration: line-through;
 }
 
-.checked_shopping_list_item_history {
-  background-color: rgb(238, 238, 238);
-}
 
 .shopping_list_item_checkbox{
   display: inline-block;
@@ -59,12 +54,29 @@ body {
   max-height: 30vh;
 }
 
+.checked_shopping_list_item_history {
+  background-color: rgb(238, 238, 238);
+}
+
+.glyphicon-time{
+  margin-right: 4%;
+}
+
+
 .revertDropdownMenuDiv {
   color: red;
 }
 
+#history_toolbar{
+  display: flex;
+  justify-content: center;
+}
 #revertDropdown{
-  margin-left: 4%;
+  margin-left: .6vw;
+}
+
+#historyDropdown{
+  margin-left: .6vw;
 }
 
 .loader {
