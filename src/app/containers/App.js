@@ -1,7 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
+
+import {
+  createShoppingItem, updateShoppingItem, deleteShoppingItem, deleteAllShoppingItems,
+  toggleCheckItem, selectHistoryEntryToInspect, revertToHistoryEntry
+} from "../actions/itemActions";
+import {toggleHistoryVisibility} from "../actions/historyVisibilityActions";
+
 import {Home} from "../components/Home";
 import {Root} from "../components/Root";
+
 
 export class App extends React.Component{
 
@@ -42,59 +50,35 @@ const mapDispatchToProps = (dispatch) => {
 
 
     createShoppingItem: (value) => {
-      dispatch({
-        type: "CREATE",
-        payload: {value: value}
-      });
+      dispatch(createShoppingItem(value));
     },
 
     updateShoppingItem: (event, index) => {
-      dispatch({
-        type: "UPDATE",
-        payload: {newValue: event.target.value, index: index}
-      });
+      dispatch(updateShoppingItem(event, index));
     },
 
     deleteShoppingItem: (index) => {
-      dispatch({
-        type: "DELETE_SHOPPING_ITEM",
-        payload: {index: index}
-      });
+      dispatch(deleteShoppingItem(index));
     },
 
     deleteAllShoppingItems: () => {
-      dispatch({
-        type: "DELETE_ALL_SHOPPING_ITEMS",
-        payload: {}
-      });
+      dispatch(deleteAllShoppingItems());
     },
 
     toggleCheckItem: (index) => {
-      dispatch({
-        type: "TOGGLE_CHECK",
-        payload: {index: index}
-      })
-    },
-
-    toggleHistoryVisibility: () => {
-      dispatch({
-        type: "TOGGLE_HISTORY_VISIBILITY",
-        payload: {}
-      })
+      dispatch(toggleCheckItem(index));
     },
 
     selectHistoryEntryToInspect: (index) => {
-      dispatch({
-        type: "SELECT_HISTORY_VERSION_TO_INSPECT",
-        payload: {index: index}
-      })
+      dispatch(selectHistoryEntryToInspect(index));
     },
 
     revertToHistoryEntry: (index) => {
-      dispatch({
-        type: "REVERT_TO_HISTORY_ENTRY",
-        payload: {index: index}
-      })
+      dispatch(revertToHistoryEntry(index));
+    },
+
+    toggleHistoryVisibility: () => {
+      dispatch(toggleHistoryVisibility());
     }
 
 
