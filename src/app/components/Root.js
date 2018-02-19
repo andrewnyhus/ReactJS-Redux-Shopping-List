@@ -2,8 +2,7 @@ import React from "react";
 
 import {Header} from "./Header";
 
-export class Root extends React.Component {
-  render(){
+export const Root = (props) => {
     return (
 
       <div className="container">
@@ -16,12 +15,11 @@ export class Root extends React.Component {
 
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            {this.props.children}
+            {props.children}
           </div>
         </div>
 
       </div>
 
     );
-  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Home} from "./Home";
-import {Root} from "./Root";
+import {Home} from "../components/Home";
+import {Root} from "../components/Root";
 
 export class App extends React.Component{
 
