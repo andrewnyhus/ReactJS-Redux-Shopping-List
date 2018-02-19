@@ -15,7 +15,7 @@ export class Root extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-10 col-xs-offset-1">
+          <div className="col-sm-6 col-sm-offset-3">
             {this.props.children}
           </div>
         </div>
