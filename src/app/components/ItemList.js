@@ -1,19 +1,29 @@
 import React from "react";
+import {Glyphicon} from "react-bootstrap";
 
 export const ItemList = (props) => {
 
 
-  const newItemRow = (
-    <li className={"list-group-item new_item shopping_list_item"}>
-      <button className={"btn btn-default"} onClick={() => props.createShoppingItem("")}>
-        <span className={"glyphicon glyphicon-plus"}></span>
+  const buttonsRow = (
+    <li className={"list-group-item button_row"}>
+
+      <button id="add_new_button" className={"btn btn-default"} onClick={() => props.createShoppingItem("")}>
+        <Glyphicon glyph={"plus"}/>
       </button>
+
+      <button id="delete_all_button"
+        disabled={props.itemResult.items.length > 0 ? false : true}
+        className={"btn btn-danger"} onClick={() => props.deleteAllShoppingItems()}>
+        <Glyphicon id="delete_all_glyph" glyph={"trash"}/>
+        Delete All
+      </button>
+
     </li>
   );
 
 
-  const itemsList = (
-    <ul className={"list-group items_list"}>
+  const items = (
+    <div>
 
       {/* Add each item to the list */}
       {/*====================================================================*/}
@@ -55,7 +65,7 @@ export const ItemList = (props) => {
               <span className="input-group-btn">
                 <button align="left" className="btn btn-danger"
                   onClick={() => props.deleteShoppingItem(i)}>
-                  <span className="glyphicon glyphicon-trash"></span>
+                  <Glyphicon glyph="trash"/>
                 </button>
               </span>
 
@@ -64,15 +74,16 @@ export const ItemList = (props) => {
         </li>
       )}
       {/*====================================================================*/}
-
-      {newItemRow}
-    </ul>
+    </div>
   );
 
 
   return (
     <div>
-      {itemsList}
+      <ul className={"list-group items_list"}>
+        {items}
+        {buttonsRow}
+      </ul>
     </div>
   );
 

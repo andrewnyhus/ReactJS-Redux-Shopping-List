@@ -15,6 +15,7 @@ export const Home = (props) => {
         updateShoppingItem={(newValue, index) => props.updateShoppingItem(newValue, index)}
         deleteShoppingItem={(index) => props.deleteShoppingItem(index)}
         toggleCheckItem={(index) => props.toggleCheckItem(index)}
+        deleteAllShoppingItems={() => props.deleteAllShoppingItems()}
         />
 
       <hr />

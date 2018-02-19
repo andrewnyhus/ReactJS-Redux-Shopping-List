@@ -26,7 +26,7 @@ const historyInspector = (
 
 
     {/* Populate History Inspector */}
-    <ul className="list-group">
+    <ul className="list-group items_list">
       {props.selectedHistoryEntryToInspect > -1 && props.itemLastValues[props.selectedHistoryEntryToInspect].items.length > 0 ? (
           <div>
             {props.itemLastValues[props.selectedHistoryEntryToInspect].items.map((item, i) =>
@@ -116,8 +116,6 @@ const revertToHistoryEntry = (
 const historyView = (
   <div hidden={!props.showHistory}>
       <br></br>
-
-
 
       {/* Show Inspector if history exists */}
       {props.selectedHistoryEntryToInspect > -1 ? (

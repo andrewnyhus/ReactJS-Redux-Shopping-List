@@ -24,8 +24,16 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.new_item>button{
-  width: 100%;
+#delete_all_glyph{
+  margin-right: 2%;
+}
+
+#delete_all_button{
+  margin-left: 2%;
+}
+
+#add_new_button, #delete_all_button{
+  width: 49%;
 }
 
 .shopping_list_item_text_history {

@@ -16,6 +16,7 @@ export class App extends React.Component{
           createShoppingItem={(value) => this.props.createShoppingItem(value)}
           updateShoppingItem={(newValue, index) => this.props.updateShoppingItem(newValue, index)}
           deleteShoppingItem={(index) => this.props.deleteShoppingItem(index)}
+          deleteAllShoppingItems={() => this.props.deleteAllShoppingItems()}
           toggleCheckItem={(index) => this.props.toggleCheckItem(index)}
           showHistory={this.props.item.historyVisibilityReducer.showHistory}
           toggleHistoryVisibility={() => this.props.toggleHistoryVisibility()}
@@ -56,8 +57,15 @@ const mapDispatchToProps = (dispatch) => {
 
     deleteShoppingItem: (index) => {
       dispatch({
-        type: "DELETE",
+        type: "DELETE_SHOPPING_ITEM",
         payload: {index: index}
+      });
+    },
+
+    deleteAllShoppingItems: () => {
+      dispatch({
+        type: "DELETE_ALL_SHOPPING_ITEMS",
+        payload: {}
       });
     },
 

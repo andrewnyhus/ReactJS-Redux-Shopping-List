@@ -49,7 +49,7 @@ const itemReducer = (state = {
       break;
 
 
-    case "DELETE": // immutably deletes item at given index
+    case "DELETE_SHOPPING_ITEM": // immutably deletes item at given index
       var indexToDelete = action.payload.index;
 
       state = {
@@ -64,6 +64,16 @@ const itemReducer = (state = {
         selectedHistoryEntryToInspect: state.lastValues.length
       }
 
+      break;
+
+    case "DELETE_ALL_SHOPPING_ITEMS": // immutably delete all shopping items
+      state = {
+        ...state,
+        result: {items: []},
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
+
+      }
       break;
 
 
@@ -85,7 +95,7 @@ const itemReducer = (state = {
 
       break;
 
-    case "REVERT_TO_HISTORY_ENTRY":
+    case "REVERT_TO_HISTORY_ENTRY": // revert to previous history version
       var index = action.payload.index;
 
       state = {
@@ -97,7 +107,7 @@ const itemReducer = (state = {
 
       break;
 
-    case "SELECT_HISTORY_VERSION_TO_INSPECT":
+    case "SELECT_HISTORY_VERSION_TO_INSPECT": // select history version to inspect
       var selectIndex = action.payload.index;
 
       state = {
