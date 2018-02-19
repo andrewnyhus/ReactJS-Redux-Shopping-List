@@ -3,11 +3,6 @@ import {Bootstrap, DropdownButton, ButtonToolbar, MenuItem, Glyphicon} from "rea
 
 export const HistoryView = (props) => {
 
-  {console.log("History  props")}
-  {console.log(props.itemLastValues.length)}
-
-
-
 const toggleHistoryVisibility = (
   <div>
     <button
@@ -97,14 +92,17 @@ const revertToHistoryEntry = (
   <div className={"dropdown_container"}>
     {/* If there is history, show revert history dropdown */}
     {props.selectedHistoryEntryToInspect > -1 ? (
-      <DropdownButton id="revertDropdown" dropup={true} noCaret title={"Revert to Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
+      <DropdownButton
+        id={"revertDropdown"}
+        className={"revertDropdown"} dropup={true} noCaret
+        title={"Revert to Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
 
         <div className={"revertDropdownMenuDiv"}>
           <h6 align="center">Are you sure?<br></br>Note: this can be undone by reverting again.</h6>
-          <MenuItem eventKey={"Yes"} onSelect={() => alert("okay let's do it")} title={"Yes"}>
-            <h6 align="center">Yes</h6>
-          </MenuItem>
         </div>
+        <MenuItem eventKey={"Yes"} onSelect={() => props.revertToHistoryEntry(props.selectedHistoryEntryToInspect)} title={"Yes"}>
+          <h6 align="center">Yes</h6>
+        </MenuItem>
 
       </DropdownButton>
     ):(

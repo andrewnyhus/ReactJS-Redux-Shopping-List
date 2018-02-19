@@ -5,8 +5,6 @@ import {HistoryView} from "./HistoryView";
 
 
 export const Home = (props) => {
-  {console.log("Home props")}
-  {console.log(props)}
 
   return (
     <div>
@@ -28,6 +26,7 @@ export const Home = (props) => {
         toggleHistoryVisibility={() => props.toggleHistoryVisibility()}
         selectHistoryEntryToInspect={(index) => props.selectHistoryEntryToInspect(index)}
         selectedHistoryEntryToInspect={props.selectedHistoryEntryToInspect}
+        revertToHistoryEntry={(index) => props.revertToHistoryEntry(index)}
         />
 
 

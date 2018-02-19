@@ -7,8 +7,6 @@ export class App extends React.Component{
 
 
   render(){
-    {console.log("app props")}
-    {console.log(this.props)}
 
     return (
       <Root>
@@ -23,6 +21,7 @@ export class App extends React.Component{
           toggleHistoryVisibility={() => this.props.toggleHistoryVisibility()}
           selectHistoryEntryToInspect={(index) => this.props.selectHistoryEntryToInspect(index)}
           selectedHistoryEntryToInspect={this.props.item.itemReducer.selectedHistoryEntryToInspect}
+          revertToHistoryEntry={(index) => this.props.revertToHistoryEntry(index)}
           />
       </Root>
     );
@@ -79,6 +78,13 @@ const mapDispatchToProps = (dispatch) => {
     selectHistoryEntryToInspect: (index) => {
       dispatch({
         type: "SELECT_HISTORY_VERSION_TO_INSPECT",
+        payload: {index: index}
+      })
+    },
+
+    revertToHistoryEntry: (index) => {
+      dispatch({
+        type: "REVERT_TO_HISTORY_ENTRY",
         payload: {index: index}
       })
     }

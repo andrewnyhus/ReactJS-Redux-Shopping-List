@@ -85,7 +85,16 @@ const itemReducer = (state = {
 
       break;
 
-    case "REVERT_TO_HISTORY_ITEM":
+    case "REVERT_TO_HISTORY_ENTRY":
+      var index = action.payload.index;
+
+      state = {
+        ...state,
+        result: state.lastValues[index],
+        lastValues: [...state.lastValues, state.result],
+        selectedHistoryEntryToInspect: state.lastValues.length
+      }
+
       break;
 
     case "SELECT_HISTORY_VERSION_TO_INSPECT":
