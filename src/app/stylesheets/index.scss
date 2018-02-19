@@ -28,13 +28,17 @@ body {
   width: 100%;
 }
 
-.shopping_list_item_text_history{
+.shopping_list_item_text_history {
   display: inline-block;
   margin-left: 1.5%;
 }
 
 .checked_shopping_list_item_text{
   text-decoration: line-through;
+}
+
+.checked_shopping_list_item_history {
+  background-color: rgb(238, 238, 238);
 }
 
 .shopping_list_item_checkbox{
@@ -44,6 +48,10 @@ body {
 .dropdown_container ul.dropdown-menu{
   overflow-y: auto;
   max-height: 30vh;
+}
+
+.revertDropdownMenuDiv {
+  color: red;
 }
 
 

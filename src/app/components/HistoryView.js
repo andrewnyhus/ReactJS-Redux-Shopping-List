@@ -1,5 +1,5 @@
 import React from "react";
-import {Bootstrap, DropdownButton, MenuItem, Glyphicon} from "react-bootstrap";
+import {Bootstrap, DropdownButton, ButtonToolbar, MenuItem, Glyphicon} from "react-bootstrap";
 
 export const HistoryView = (props) => {
 
@@ -36,13 +36,17 @@ const historyInspector = (
           <div>
             {props.itemLastValues[props.selectedHistoryEntryToInspect].items.map((item, i) =>
 
-              <li key={"item_"+i} className={"list-group-item shopping_list_item"}>
+              <li
+                key={"item_"+i}
+                className={item.checked ?
+                  "list-group-item shopping_list_item checked_shopping_list_item_history":
+                  "list-group-item shopping_list_item"}>
 
                   {/* Item checkbox & text */}
                   {item.checked ? (
                     <div>
                       <input type="checkbox" className={"shopping_list_item_checkbox"} disabled={true} checked={true} onChange={() => props.toggleCheckItem(i)} />
-                      <div className={"shopping_list_item_text checked_shopping_list_item_text"}>{item.value}</div>
+                      <div className={"shopping_list_item_text_history checked_shopping_list_item_text"}>{item.value}</div>
                     </div>
                   ):(
                     <div>
@@ -67,7 +71,7 @@ const historyInspector = (
 
 const historyDropdown = (
   <div className={"dropdown_container"}>
-    {/* Show dropdown of history versions */}
+    {/* If there is history, show history dropdown */}
     {props.selectedHistoryEntryToInspect > -1 ? (
       <DropdownButton id="historyDropdown" dropup={true} title={"Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
 
@@ -89,19 +93,44 @@ const historyDropdown = (
 
 
 
+const revertToHistoryEntry = (
+  <div className={"dropdown_container"}>
+    {/* If there is history, show revert history dropdown */}
+    {props.selectedHistoryEntryToInspect > -1 ? (
+      <DropdownButton id="revertDropdown" dropup={true} noCaret title={"Revert to Edit # " + (props.selectedHistoryEntryToInspect + 1)}>
+
+        <div className={"revertDropdownMenuDiv"}>
+          <h6 align="center">Are you sure?<br></br>Note: this can be undone by reverting again.</h6>
+          <MenuItem eventKey={"Yes"} onSelect={() => alert("okay let's do it")} title={"Yes"}>
+            <h6 align="center">Yes</h6>
+          </MenuItem>
+        </div>
+
+      </DropdownButton>
+    ):(
+      <h4 align="center">No History</h4>
+    )}
+  </div>
+);
+
+
+
 const historyView = (
   <div hidden={!props.showHistory}>
       <br></br>
 
 
-      {historyDropdown}
-
-
-
 
       {/* Show Inspector if history exists */}
       {props.selectedHistoryEntryToInspect > -1 ? (
-        <div>{historyInspector}</div>
+        <div>
+          <ButtonToolbar>
+            {historyDropdown}
+            {revertToHistoryEntry}
+          </ButtonToolbar>
+
+          {historyInspector}
+        </div>
       ):""}
 
   </div>
