@@ -1,0 +1,14 @@
+body {
+  background-color: white; }
+
+.news_story {
+  background-color: #eeeeee; }
+
+.news_story:hover {
+  background-color: #1eaffc; }
+
+.news_story > a {
+  padding-left: 10px; }
+
+.news_story:hover > a {
+  color: white; }
