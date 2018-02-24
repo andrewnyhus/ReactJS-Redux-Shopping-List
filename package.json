@@ -5,10 +5,11 @@
   "main": "index.js",
   "homepage": "https://andrewnyhus.github.io/ReactJS-Redux-Shopping-List/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
-    "build:prod": "webpack -p && cp src/index.html dist/index.html",
-    "deploy": "npm run build&&cp -r dist/ docs/"
+    "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
   "keywords": [
     "reactjs",
@@ -18,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "css-loader": "^0.28.9",
-    "gh-pages": "^1.1.0",
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
