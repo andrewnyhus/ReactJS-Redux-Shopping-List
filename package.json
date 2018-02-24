@@ -5,8 +5,6 @@
   "main": "index.js",
   "homepage": "https://andrewnyhus.github.io/ReactJS-Redux-Shopping-List/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cp src/index.html dist/index.html"
