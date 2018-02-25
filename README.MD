@@ -1,5 +1,7 @@
 # ReactJS Redux Shopping List
+[Hosted Using Github Pages Here](https://andrewnyhus.github.io/ReactJS-Redux-Shopping-List/)
 
+## Description
 In this project, ReactJS, Redux and Sass were used to create a shopping list interface.
 This interface allows the user to create new items on the list, update the value
 of items on the list, update whether items on the list were picked up, and
@@ -16,7 +18,7 @@ edit history of the list, and revert back to previous versions of the list.
 * "Smart" and "Dumb" Components
 * React Bootstrap
 
-## Demo
+## Demo (Again, [Hosted Using Github Pages Here](https://andrewnyhus.github.io/ReactJS-Redux-Shopping-List/))
 
 
 ### Create Shopping List Item (Click '+' Button or Press Enter in Focused Textbox)
